@@ -45,16 +45,25 @@
       <HintPath>..\packages\FluentAssertions.4.6.2\lib\net45\FluentAssertions.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Grace, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Source\Repos\Grace\Output\bin\AnyCPU\Grace.dll</HintPath>
-    </Reference>
-    <Reference Include="SimpleFixture, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SimpleFixture.1.3.1\lib\portable45-net45+win8+wp8+wpa81\SimpleFixture.dll</HintPath>
+    <Reference Include="Grace, Version=3.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grace.3.1.2\lib\portable-net45+win+wpa81+wp80\Grace.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SimpleFixture.xUnit">
-      <HintPath>..\..\..\..\..\Source\Repos\SimpleFixture\src\SimpleFixture.xUnit\bin\Debug\SimpleFixture.xUnit.dll</HintPath>
+    <Reference Include="SimpleFixture, Version=1.3.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleFixture.1.3.5\lib\portable45-net45+win8+wp8+wpa81\SimpleFixture.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleFixture.xUnit, Version=1.3.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleFixture.xUnit.1.3.5\lib\portable45-net45+win8+wpa81\SimpleFixture.xUnit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleWhiteFixture, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleWhiteFixture.1.0.0-Beta21\lib\net452\SimpleWhiteFixture.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleWhiteFixture.xUnit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleWhiteFixture.xUnit.1.0.0-Beta21\lib\net452\SimpleWhiteFixture.xUnit.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -87,10 +96,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationDataAttribute.cs" />
     <Compile Include="BasicAppTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WindowFixture.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

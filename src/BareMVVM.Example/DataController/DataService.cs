@@ -15,6 +15,7 @@ namespace BareMVVM.Example.DataController
     public class DataService : IDataService
     {
         public const string BlahText = "Blah Blah hello 4";
+
         public string Blah
         {
             get

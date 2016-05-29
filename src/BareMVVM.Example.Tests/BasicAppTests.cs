@@ -1,6 +1,8 @@
 ﻿using BareMVVM.Example.DataController;
 using BareMVVM.Example.ViewModel;
 using FluentAssertions;
+using SimpleWhiteFixture;
+using SimpleWhiteFixture.xUnit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,24 +17,20 @@ namespace BareMVVM.Example.Tests
 {
     public class BasicAppTests
     {
-        [Theory]
-        [ApplicationData("BareMVVM.Example.exe")]
-        public void BasicExample_CheckTextBlock(Application application)
+        [UITheory]
+        [Application("BareMVVM.Example.exe")]
+        public void BasicExample_CheckTextBlock(IWindowFixture i)
         {
-            var window = new WindowFixture(application.GetWindow("MainWindow"));
-
-            window.GetText("TextBlock").Should().Be(DataService.BlahText);
+            i.Get.Text.From("TextBlock").Should().Be(DataService.BlahText);
         }
 
-        [Theory]
-        [ApplicationData("BareMVVM.Example.exe")]
-        public void BasicExample_ClickButton_CheckText(Application application)
+        [UITheory]
+        [Application("BareMVVM.Example.exe")]
+        public void BasicExample_ClickButton_CheckText(IWindowFixture i)
         {
-            var window = new WindowFixture(application.GetWindow("MainWindow"));
+            i.Click("ClickButton");
 
-            window.Click("ClickButton");
-
-            window.GetText("ClickTextBlock").Should().Be(MainWindowViewModel.ClickString);
+            i.Get.Text.From("ClickTextBlock").Should().Be(MainWindowViewModel.ClickString);
         }
     }
 }
