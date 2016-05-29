@@ -1,0 +1,16 @@
+﻿<Window x:Class="BareMVVM.Example.MainWindow"
+        DataContext="{Binding Source={StaticResource Locator},Path=MainWindowViewModel}"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BareMVVM.Example"
+        xmlns:bare="clr-namespace:BareMVVM.View;assembly=BareMVVM"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel>
+        <TextBlock Name="TextBlock"  Text="{Binding TestString}"/>
+        <TextBlock Name="ClickTextBlock" Text="{Binding AnotherString}"/>
+        <Button Name="ClickButton" bare:EventHandlers.Attach="Click => ClickHandler()">Click me</Button>
+    </StackPanel>
+</Window>

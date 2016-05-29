@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F729AE36-DD22-4807-B727-273CC1DA6C73}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BareMVVM</RootNamespace>
+    <AssemblyName>BareMVVM.UWP</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile32</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\BareMVVM\BareConfiguration.cs">
+      <Link>BareConfiguration.cs</Link>
+    </Compile>
+    <Compile Include="..\BareMVVM\DependencyInjection\DesignTimeOnlyAttribute.cs">
+      <Link>DependencyInjection\DesignTimeOnlyAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\BareMVVM\DependencyInjection\DesignTimeOnlyCondition.cs">
+      <Link>DependencyInjection\DesignTimeOnlyCondition.cs</Link>
+    </Compile>
+    <Compile Include="..\BareMVVM\LanguageExtensions\DispatcherExtensions.cs">
+      <Link>LanguageExtensions\DispatcherExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\BareMVVM\LanguageExtensions\FrameworkElementExtensions.cs">
+      <Link>LanguageExtensions\FrameworkElementExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\BareMVVM\Messenger\BackgroundMessageHandlerAttribute.cs">
+      <Link>Messenger\BackgroundMessageHandlerAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\BareMVVM\Messenger\BaseMessageHandler.cs">
+      <Link>Messenger\BaseMessageHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\BareMVVM\Messenger\CallbackMessage.cs">
+      <Link>Messenger\CallbackMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\BareMVVM\Messenger\DispatchedMessenger.cs">
+      <Link>Messenger\DispatchedMessenger.cs</Link>
+    </Compile>
+    <Compile Include="..\BareMVVM\Messenger\IDispatchedMessenger.cs">
+      <Link>Messenger\IDispatchedMessenger.cs</Link>
+    </Compile>
+    <Compile Include="..\BareMVVM\Messenger\IExportTypeSetConfigurationExtensions.cs">
+      <Link>Messenger\IExportTypeSetConfigurationExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\BareMVVM\Messenger\IMessageHandlerWrapper.cs">
+      <Link>Messenger\IMessageHandlerWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\BareMVVM\Messenger\MessageHandlerAttribute.cs">
+      <Link>Messenger\MessageHandlerAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\BareMVVM\Messenger\MessageHandlerEnrichmentProvider.cs">
+      <Link>Messenger\MessageHandlerEnrichmentProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\BareMVVM\Messenger\ReferencedMessageHandler.cs">
+      <Link>Messenger\ReferencedMessageHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\BareMVVM\Messenger\WeakMessageHandler.cs">
+      <Link>Messenger\WeakMessageHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\BareMVVM\Utilities\DesignModeUtility.cs">
+      <Link>Utilities\DesignModeUtility.cs</Link>
+    </Compile>
+    <Compile Include="..\BareMVVM\Utilities\VisualTreeHelperExtensions.cs">
+      <Link>Utilities\VisualTreeHelperExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\BareMVVM\View\EventHandlerInstance.cs">
+      <Link>View\EventHandlerInstance.cs</Link>
+    </Compile>
+    <Compile Include="..\BareMVVM\View\EventHandlerList.cs">
+      <Link>View\EventHandlerList.cs</Link>
+    </Compile>
+    <Compile Include="..\BareMVVM\View\EventHandlers.cs">
+      <Link>View\EventHandlers.cs</Link>
+    </Compile>
+    <Compile Include="..\BareMVVM\View\ViewHelper.cs">
+      <Link>View\ViewHelper.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModelLocator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Grace, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grace.3.1.0.0\lib\portable-net45+win+wpa81+wp80\Grace.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Conventions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TargetPlatform Include="Windows, Version=8.1" />
+    <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
