@@ -1,0 +1,15 @@
+version: 1.0.0-beta{build}
+os: unstable
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+before_build:
+- ps: nuget restore src/BareMVVM.sln
+build:
+  project: src/BareMVVM.sln
+  parallel: true
+test_script:
+  - cmd: '"c:\Projects\BareMVVM\src\packages\xunit.runner.console.2.1.0\tools\xunit.console.exe" "c:\Projects\BareMVVM\Output\Tests\SimpleWhiteFixture.Example.Tests.dll"'  verbosity: minimal
