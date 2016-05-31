@@ -13,4 +13,4 @@ build:
   parallel: true
   verbosity: minimal
 test_script:
-  - cmd: '"c:\Projects\BareMVVM\src\packages\xunit.runner.console.2.1.0\tools\xunit.console.exe" "c:\Projects\BareMVVM\Output\Tests\SimpleWhiteFixture.Example.Tests.dll"'
+  - cmd: '"c:\Projects\BareMVVM\src\packages\xunit.runner.console.2.1.0\tools\xunit.console.exe" "c:\Projects\BareMVVM\Output\Tests\BareMVVM.Example.Tests.dll"'
