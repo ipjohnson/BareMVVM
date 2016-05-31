@@ -58,11 +58,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="SimpleWhiteFixture, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SimpleWhiteFixture.1.0.0-Beta21\lib\net452\SimpleWhiteFixture.dll</HintPath>
+      <HintPath>..\packages\SimpleWhiteFixture.1.0.0-Beta23\lib\net452\SimpleWhiteFixture.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SimpleWhiteFixture.xUnit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SimpleWhiteFixture.xUnit.1.0.0-Beta21\lib\net452\SimpleWhiteFixture.xUnit.dll</HintPath>
+      <HintPath>..\packages\SimpleWhiteFixture.xUnit.1.0.0-Beta23\lib\net452\SimpleWhiteFixture.xUnit.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

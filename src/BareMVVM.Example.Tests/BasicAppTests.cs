@@ -32,5 +32,20 @@ namespace BareMVVM.Example.Tests
 
             i.Get.Text.From("ClickTextBlock").Should().Be(MainWindowViewModel.ClickString);
         }
+
+        [UITheory]
+        [Application("BareMVVM.Example.exe")]
+        public void BasicExample_MediatorSendMessage_Receive(IWindowFixture i)
+        {
+            var newWindow = i.Click("SecondWindowButton").NewWindow("SecondWindow");
+
+            var testString = "Some Test Value";
+
+            newWindow.Fill("LeftTextBox").With(testString);
+
+            newWindow.Click("SecondButton");
+            
+            i.Get.Text.From("ClickTextBlock").Should().Be(testString);
+        }
     }
 }

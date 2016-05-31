@@ -1,0 +1,25 @@
+﻿<Window x:Class="BareMVVM.Example.Views.SecondWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BareMVVM.Example.Views"
+        xmlns:bare="clr-namespace:BareMVVM.View;assembly=BareMVVM"
+        DataContext="{Binding Source={StaticResource Locator},Path=SecondWindowViewModel}"
+        mc:Ignorable="d"
+        Title="SecondWindow" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBox Name="LeftTextBox" VerticalAlignment="Center" Text="{Binding DataString}" />
+        <Button Name="SecondButton" Grid.Row="1" VerticalAlignment="Center" bare:EventHandlers.Attach="Click => SendMessage()">Send Message</Button>
+    </Grid>
+</Window>

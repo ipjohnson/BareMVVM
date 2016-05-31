@@ -36,7 +36,7 @@ namespace BareMVVM
         {
             if (_container == null)
             {
-                _container = new DependencyInjectionContainer();
+                _container = new DependencyInjectionContainer { new BareConfiguration() };
 
                 ConfigureAssembly(GetType().GetTypeInfo().Assembly);
             }         

@@ -1,4 +1,7 @@
 ﻿using BareMVVM.Example.DataController;
+using BareMVVM.Example.Messages;
+using BareMVVM.Example.Views;
+using BareMVVM.Messenger;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +35,19 @@ namespace BareMVVM.Example.ViewModel
         public void ClickHandler()
         {
             AnotherString = ClickString;
+        }
+
+        public void OpenNewSecondWindow()
+        {
+            var secondWindow = new SecondWindow();
+
+            secondWindow.Show();
+        }
+
+        [MessageHandler]
+        public void MessageHandler(TestDataMessage message)
+        {
+            AnotherString = message.Data;
         }
     }
 }

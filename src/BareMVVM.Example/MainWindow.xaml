@@ -12,5 +12,6 @@
         <TextBlock Name="TextBlock"  Text="{Binding TestString}"/>
         <TextBlock Name="ClickTextBlock" Text="{Binding AnotherString}"/>
         <Button Name="ClickButton" bare:EventHandlers.Attach="Click => ClickHandler()">Click me</Button>
+        <Button Name="SecondWindowButton" bare:EventHandlers.Attach="Click => OpenNewSecondWindow()">Open Second Window</Button>
     </StackPanel>
 </Window>

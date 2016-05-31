@@ -70,6 +70,8 @@ namespace BareMVVM.Messenger
 				{
 					InternalExecute(message);
 				}
+
+                return true;
 			}
 
 			return false;
