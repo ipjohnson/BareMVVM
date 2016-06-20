@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel;
 #else
 using System.Windows;
+using Windows.ApplicationModel;
 #endif
 
 namespace BareMVVM.Ultilities
@@ -23,7 +24,7 @@ namespace BareMVVM.Ultilities
 #if NETFX_CORE
 				return DesignMode.DesignModeEnabled;
 #else
-				return false;
+				return System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
 #endif
 			}
 		}

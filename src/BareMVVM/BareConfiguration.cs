@@ -14,12 +14,10 @@ namespace BareMVVM
         public void Configure(IExportRegistrationBlock registrationBlock)
         {
             registrationBlock.ExportInstance(new ReflectionService()).
-                As<IReflectionService>().
-                Lifestyle.Singleton();
+                As<IReflectionService>();
 
             registrationBlock.ExportInstance(new DispatchedMessenger()).
-                As<IDispatchedMessenger>().
-                Lifestyle.Singleton();
+                As<IDispatchedMessenger>();
         }
     }
 }

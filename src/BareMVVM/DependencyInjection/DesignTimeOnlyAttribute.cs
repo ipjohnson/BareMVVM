@@ -8,11 +8,11 @@ using Grace.DependencyInjection.Attributes.Interfaces;
 
 namespace BareMVVM.DependencyInjection
 {
-    public class DesignTimeOnlyAttribute : Attribute, IExportConditionAttribute
+    public class DesignTimeOnlyAttribute : Attribute, IExportPriorityAttribute
     {
-        public IExportCondition ProvideCondition(Type attributedType)
+        public int ProvidePriority(Type attributedType)
         {
-            return new DesignTimeOnlyCondition();
+            return 10;
         }
     }
 }

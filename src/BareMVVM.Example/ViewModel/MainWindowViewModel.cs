@@ -45,7 +45,7 @@ namespace BareMVVM.Example.ViewModel
         }
 
         [MessageHandler]
-        public void MessageHandler(TestDataMessage message)
+        public void TestDataMessageHandler(TestDataMessage message)
         {
             AnotherString = message.Data;
         }

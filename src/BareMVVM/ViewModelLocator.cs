@@ -11,6 +11,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Windows.ApplicationModel;
+using BareMVVM.Ultilities;
 
 #if NETFX_CORE
 using Windows.UI.Xaml;
@@ -29,57 +31,66 @@ namespace BareMVVM
 #endif
     {
         protected DependencyInjectionContainer _container;
+        protected bool _inDesignMode;
 
-        public DependencyInjectionContainer Container {  get { return _container; } }
+        public DependencyInjectionContainer Container { get { return _container; } }
 
         protected virtual void InitializeContainer()
         {
+            _inDesignMode = DesignModeUtility.DesignModeIsEnabled;
+
             if (_container == null)
             {
                 _container = new DependencyInjectionContainer { new BareConfiguration() };
 
                 ConfigureAssembly(GetType().GetTypeInfo().Assembly);
-            }         
+            }
         }
 
         protected virtual void ConfigureAssembly(Assembly assembly)
         {
             _container.Configure(c => c.Export(assembly.ExportedTypes).
-                                        ByInterfaces().
-                                        ByName(t =>
-                                        {
-                                            var typeInfo = t.GetTypeInfo();
+                                        ByTypes(ExportByInterfaces).
+                                        ByName(ExportByName).
+                                        ProcessAttributes().
+                                        UsingLifestyle(LifestylePicker));
+        }
 
-                                            if(t.Name.EndsWith("ViewModel") || 
-                                               typeof(Window).GetTypeInfo().IsAssignableFrom(typeInfo) ||
-                                               typeof(Page).GetTypeInfo().IsAssignableFrom(typeInfo) ||
-                                               typeof(UserControl).GetTypeInfo().IsAssignableFrom(typeInfo))
-                                            {
-                                                return t.Name;
-                                            }
+        private string ExportByName(Type t)
+        {
+            var typeInfo = t.GetTypeInfo();
 
-                                            return null;
-                                        }).
-                                        AndCondition(ConditionsMethod).                                                                                
-                                        ImportAttributedMembers().
-                                        UsingLifestyle(LifestylePicker).
-                                        WithPriority(t =>
-                                        {
-                                            if (t.GetTypeInfo().GetCustomAttributes(true).Any(a => a is DesignTimeOnlyAttribute))
-                                            {
-                                                return 1;
-                                            }
+            if (t.Name.EndsWith("ViewModel") ||
+               typeof(Window).GetTypeInfo().IsAssignableFrom(typeInfo) ||
+               typeof(Page).GetTypeInfo().IsAssignableFrom(typeInfo) ||
+               typeof(UserControl).GetTypeInfo().IsAssignableFrom(typeInfo))
+            {
+                return t.Name;
+            }
 
-                                            return 0;
-                                        }));
+            return null;
+        }
+
+        private IEnumerable<Type> ExportByInterfaces(Type exportingType)
+        {
+            if (!_inDesignMode && exportingType.GetTypeInfo().GetCustomAttributes().Any(a => a is DesignTimeOnlyAttribute))
+            {
+                yield break;
+            }
+
+            // TODO: Handle generic interfaces
+            foreach(var interfaceType in exportingType.GetTypeInfo().ImplementedInterfaces)
+            {
+                yield return interfaceType;
+            }
         }
 
         protected virtual IExportCondition ConditionsMethod(Type type)
         {
-            var conditionAttribute = 
+            var conditionAttribute =
                 (IExportConditionAttribute)type.GetTypeInfo().GetCustomAttributes().FirstOrDefault(a => a is IExportConditionAttribute);
 
-            if(conditionAttribute != null)
+            if (conditionAttribute != null)
             {
                 return conditionAttribute.ProvideCondition(type);
             }
@@ -89,15 +100,15 @@ namespace BareMVVM
 
         protected virtual ILifestyle LifestylePicker(Type typePicker)
         {
-            var lifestyleAttribute = 
+            var lifestyleAttribute =
                 (ILifestyleProviderAttribute)typePicker.GetTypeInfo().GetCustomAttributes(true).FirstOrDefault(a => a is ILifestyleProviderAttribute);
 
-            if(lifestyleAttribute != null)
+            if (lifestyleAttribute != null)
             {
                 return lifestyleAttribute.ProvideLifestyle(typePicker);
             }
 
-            if(typePicker.Name.EndsWith("Singleton"))
+            if (typePicker.Name.EndsWith("Singleton"))
             {
                 return new SingletonLifestyle();
             }
