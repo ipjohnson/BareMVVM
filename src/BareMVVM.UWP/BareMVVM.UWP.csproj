@@ -40,9 +40,6 @@
     <Compile Include="..\BareMVVM\DependencyInjection\DesignTimeOnlyAttribute.cs">
       <Link>DependencyInjection\DesignTimeOnlyAttribute.cs</Link>
     </Compile>
-    <Compile Include="..\BareMVVM\DependencyInjection\DesignTimeOnlyCondition.cs">
-      <Link>DependencyInjection\DesignTimeOnlyCondition.cs</Link>
-    </Compile>
     <Compile Include="..\BareMVVM\LanguageExtensions\DispatcherExtensions.cs">
       <Link>LanguageExtensions\DispatcherExtensions.cs</Link>
     </Compile>
