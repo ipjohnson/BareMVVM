@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Grace, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Grace.4.0.0-rc5-48\lib\portable45-net45+win8+wp8+wpa81\Grace.dll</HintPath>
+      <HintPath>..\packages\Grace.4.0.0-rc6-51\lib\portable45-net45+win8+wp8+wpa81\Grace.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
